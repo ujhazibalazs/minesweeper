@@ -1,2 +1,6 @@
-package Logic;public enum Types {
+package Logic;
+
+enum Types {
+    BOMB,
+    EMPTY
 }
