@@ -6,19 +6,26 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
 @Data
 public class User {
 
+    @Email
     @Id
     @Column(unique = true)
     private String email;
 
+
+    @Size(min = 3, max = 20)
     @Column(name = "username")
     private String username;
 
+    @Size(min = 3, max = 20)
     @Column(name = "password")
     private String password;
 
