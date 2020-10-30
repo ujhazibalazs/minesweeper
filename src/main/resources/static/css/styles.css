@@ -1,17 +1,20 @@
-h1 {
-    color: black;
+body {
+    background-color: violet;
+}
+
+.header, .body, .footer {
+    margin: 5px;
+    padding: 10px;
+    border: solid 1px black;
 }
 
 div {
-    width: 50%;
-    margin: auto;
-    padding: 10px;
-    background-color: lime;
+    font-family: Arial;
 }
 
 label {
     display: inline-block;
-    width: 200px;
+    width: 100px;
     margin: 5px;
     text-align: left;
 }
@@ -24,7 +27,32 @@ span {
 }
 
 button {
-    align: center;
     padding: 10px;
     margin: 10px;
+}
+
+.innerpage {
+    border: solid 2px black;
+    width: 50%;
+    margin: auto;
+    background-color: beige;
+}
+
+.header {
+    text-align: center;
+}
+
+.registration-form {
+    width: 90%;
+}
+
+.label-wrapper {
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+}
+.button-wrapper {
+    display: inline-block;
+    vertical-align: top;
+
 }

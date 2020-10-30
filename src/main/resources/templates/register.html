@@ -6,23 +6,44 @@
         <title>Registration</title>
     </head>
     <body>
-        <div>
-            <h1>Registration</h1>
-            <form action="#" th:action="@{/register}" th:object="${user}" method="post">
-                <label>Username:</label>
-                <input type="text" th:field="*{username}" />
-                <br />
+        <div class="innerpage">
+            <div class="header">
+                <h1>Minesweeper</h1>
+            </div>
+            <div class="body">
+                <h2>Registration</h2>
+                <div class="registration-form">
+                    <form action="#" th:action="@{/register}" th:object="${user}" method="post">
+                        <div class="label-wrapper">
 
-                <label>E-mail:</label>
-                <input type="text" th:field="*{email}" />
-                <br />
+                            <label>Username:</label>
+                            <input type="text" th:field="*{username}" name="username" />
+                            <span th:if="${#fields.hasErrors('username'}" th:errors="*{username}">Username error</span>
+                            <br />
 
-                <label>Password:</label>
-                <input type="password" th:field="*{password}" />
-                <br />
+                            <label>E-mail:</label>
+                            <input type="email" th:field="*{email}" name="email" />
+                            <span th:if="${#fields.hasErrors('email'}" th:errors="*{email}">Email error</span>
+                            <br />
 
-                <button type="submit">Register</button>
-            </form>
+                            <label>Password:</label>
+                            <input type="password" th:field="*{password}" name="password" />
+                            <span th:if="${#fields.hasErrors('password'}" th:errors="*{password}">Password error</span>
+                            <br />
+
+                            <span>Already have an account?</span>
+                            <br />
+                            <a href="/">Log in</a>
+                        </div>
+                        <div class="button-wrapper">
+                            <button type="submit">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer">
+                <h3>Footer</h3>
+            </div>
         </div>
     </body>
 </html>
