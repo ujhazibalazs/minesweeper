@@ -15,9 +15,10 @@ import javax.validation.constraints.Size;
 @Data
 public class User {
 
-    @Email
     @Id
     @Column(unique = true)
+    @Email
+    @NotBlank
     private String email;
 
 

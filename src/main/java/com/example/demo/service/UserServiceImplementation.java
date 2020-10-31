@@ -20,7 +20,15 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public User createUser(User user) {
-        return userRepository.save(user);
+        Optional<User> userDb = this.userRepository.findById(user.getEmail());
+
+        if(userDb.isEmpty()) {
+            return userRepository.save(user);
+        } else {
+            Logger.error("Email already in use.");
+            throw new RuntimeException();
+            //throw email already in use exception
+        }
     }
 
     @Override
@@ -69,4 +77,10 @@ public class UserServiceImplementation implements UserService {
             //throw record with this email not found exception.
         }
     }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return userRepository.existsById(email);
+    }
+
 }

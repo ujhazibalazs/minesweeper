@@ -30,15 +30,15 @@ public class RegisterController {
     public String submitForm(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "register";
-        } else {
+        }
+        if (!userService.existsByEmail(user.getEmail())) {
+            userService.createUser(user);
             return "register_success";
+        } else {
+            //email already in use
+            return "register";
         }
 
-        /*
-        System.out.println(user);
-        userService.createUser(user);
-        return "register_success";
-        */
     }
 
 }

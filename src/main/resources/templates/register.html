@@ -14,30 +14,30 @@
                 <h2>Registration</h2>
                 <div class="registration-form">
                     <form action="#" th:action="@{/register}" th:object="${user}" method="post">
-                        <div class="label-wrapper">
-
-                            <label>Username:</label>
-                            <input type="text" th:field="*{username}" name="username" />
-                            <span th:if="${#fields.hasErrors('username'}" th:errors="*{username}">Username error</span>
-                            <br />
-
-                            <label>E-mail:</label>
-                            <input type="email" th:field="*{email}" name="email" />
-                            <span th:if="${#fields.hasErrors('email'}" th:errors="*{email}">Email error</span>
-                            <br />
-
-                            <label>Password:</label>
-                            <input type="password" th:field="*{password}" name="password" />
-                            <span th:if="${#fields.hasErrors('password'}" th:errors="*{password}">Password error</span>
-                            <br />
-
-                            <span>Already have an account?</span>
-                            <br />
-                            <a href="/">Log in</a>
-                        </div>
-                        <div class="button-wrapper">
-                            <button type="submit">Register</button>
-                        </div>
+                        <table>
+                            <tr>
+                                <td>Username</td>
+                                <td><input type="text" th:field="*{username}" /></td>
+                                <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td><input type="text" th:field="*{email}" /></td>
+                                <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
+                            </tr>
+                            <tr>
+                                <td>Password</td>
+                                <td><input type="password" th:field="*{password}" /></td>
+                                <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
+                            </tr>
+                            <tr>
+                                <td><button type="submit">Register</button></td>
+                            </tr>
+                            <tr>
+                                <td>Already have an account?</td>
+                                <td><a href="/">Log in</a></td>
+                            </tr>
+                        </table>
                     </form>
                 </div>
             </div>
