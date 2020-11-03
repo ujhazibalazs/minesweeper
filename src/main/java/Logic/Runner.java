@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Runner {
     public static void main(String[] args) {
-        Field field = new Field(10, 10, 25);
+        Field field = new Field(5, 5, 3);
 
         /*
         //Clicks all the cells in order
@@ -25,6 +25,11 @@ public class Runner {
 
         while(true) {
 
+            if(field.allEmptyCellsRevealed()) {
+                Logger.warn("You Won!");
+                System.exit(0);
+            }
+
             Logger.info("Enter your selection's x coordinate: ");
             x = sc.nextInt();
             Logger.info("Enter your selection's y coordinate: ");
@@ -32,11 +37,6 @@ public class Runner {
 
             field.click(x-1, y-1);
             field.log();
-
-            if(field.allEmptyCellsRevealed()) {
-                Logger.warn("You Won!");
-                System.exit(0);
-            }
         }
     }
 }

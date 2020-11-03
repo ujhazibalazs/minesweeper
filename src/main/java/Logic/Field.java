@@ -63,7 +63,7 @@ public class Field {
                     if(gameField[i][j].getType() == Types.BOMB) {
                         line += "¤ ";
                     } else if (gameField[i][j].getType() == Types.EMPTY) {
-                        line += GetNumberOfMines(i, j) + " ";
+                        line += getNumberOfMines(i, j) + " ";
                     }
                 } else {
                     line += ". ";
@@ -81,7 +81,7 @@ public class Field {
                 if(gameField[i][j].getType() == Types.BOMB) {
                     line += "¤ ";
                 } else if (gameField[i][j].getType() == Types.EMPTY) {
-                    line += GetNumberOfMines(i, j) + " ";
+                    line += getNumberOfMines(i, j) + " ";
                 }
             }
             Logger.debug(line);
@@ -96,14 +96,16 @@ public class Field {
             if(gameField[posX][posY].getType() == Types.BOMB) {
                 Logger.info("You Lost! You clicked (" + (posX + 1) + ", "+ (posY + 1) + ")");
                 Logger.info("");
+                System.exit(0);
             } else {
                 Logger.info("");
             }
         }
+
         return gameField;
     }
 
-    int GetNumberOfMines(int x, int y) {
+    int getNumberOfMines(int x, int y) {
         int numberOfBombs = 0;
         if(x >= 0 && x < width && y >= 0 && y < height) {
             for(int i = x - 1; i <= x + 1; i++) {
