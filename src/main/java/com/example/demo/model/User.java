@@ -16,12 +16,6 @@ import javax.validation.constraints.Size;
 public class User {
 
     @Id
-    @Column(unique = true)
-    @Email
-    @NotBlank
-    private String email;
-
-
     @Size(min = 3, max = 20)
     @Column(name = "username")
     private String username;
@@ -30,12 +24,15 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    public String getEmail() {
-        return email;
+    @Column(name = "enabled")
+    private boolean enabled = true;
+
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getUsername() {
@@ -57,10 +54,9 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "email='" + email + '\'' +
-                ", username='" + username + '\'' +
+                "username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", enabled=" + enabled +
                 '}';
     }
-
 }
