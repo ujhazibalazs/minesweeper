@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>
+            MINESWEEPER
+        </title>
+        <link href="index.css" rel="stylesheet" type="text/css">
+        <script src="/webjars/jquery/jquery.min.js"></script>
+        <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+        <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+        <script src="/app.js"></script>
+    </head>
+    <body>
+
+        <button id="connect" onclick="connect()">
+            Connect
+        </button>
+
+        <button id="start" onclick="start()">
+            Start
+        </button>
+
+        <p id="startMessage"></p>
+
+        <div>
+            <p id="numberOfTotalMines">Total number of mines: </p>
+        </div>
+        <div id="table">
+            <table>
+                <tbody id="gameField"></tbody>
+            </table>
+        </div>
+        <div>
+            <p id="emptyCellsRevealed">Empty cells revealed: </p>
+        </div>
+    </body>
+</html>

@@ -1,5 +1,6 @@
 package Logic;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import org.tinylog.Logger;
 import java.util.ArrayList;
@@ -133,5 +134,10 @@ public class Field {
             }
         }
         return numberOfTotalMines == (width * height) - numberOfRevealedEmptyCells;
+    }
+
+    public String stringify() throws Exception {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.writeValueAsString(gameField);
     }
 }

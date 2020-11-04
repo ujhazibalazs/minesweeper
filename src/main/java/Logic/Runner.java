@@ -6,7 +6,14 @@ import java.util.Scanner;
 
 public class Runner {
     public static void main(String[] args) {
-        Field field = new Field(5, 5, 3);
+
+        Field field = new Field(10, 10, 25);
+
+        try {
+            Logger.info(field.stringify());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         /*
         //Clicks all the cells in order
