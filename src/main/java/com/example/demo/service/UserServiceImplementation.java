@@ -20,7 +20,7 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public User createUser(User user) {
-        Optional<User> userDb = this.userRepository.findById(user.getEmail());
+        Optional<User> userDb = this.userRepository.findById(user.getUsername());
 
         if(userDb.isEmpty()) {
             return userRepository.save(user);
@@ -33,13 +33,13 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public User updateUser(User user) {
-        Optional<User> userDb = this.userRepository.findById(user.getEmail());
+        Optional<User> userDb = this.userRepository.findById(user.getUsername());
         
         if(userDb.isPresent()) {
             User userUpdate = userDb.get();
-            userUpdate.setEmail(user.getEmail());
             userUpdate.setUsername(user.getUsername());
             userUpdate.setPassword(user.getPassword());
+            userUpdate.setEnabled(user.isEnabled());
             userRepository.save(userUpdate);
             return userUpdate;
         } else {
@@ -55,8 +55,8 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
-    public User getUserByEmail(String email) {
-        Optional<User> userDb = this.userRepository.findById(email);
+    public User getUserByUsername(String username) {
+        Optional<User> userDb = this.userRepository.findById(username);
         if(userDb.isPresent()) {
             return userDb.get();
         } else {
@@ -67,20 +67,20 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
-    public void deleteUserByEmail(String email) {
+    public void deleteUserByUsername(String email) {
         Optional<User> userDb = this.userRepository.findById(email);
         if(userDb.isPresent()) {
             this.userRepository.delete(userDb.get());
         } else {
-            Logger.error("Recod with the given email not found");
+            Logger.error("Record with the given email not found");
             throw new RuntimeException();
             //throw record with this email not found exception.
         }
     }
 
     @Override
-    public boolean existsByEmail(String email) {
-        return userRepository.existsById(email);
+    public boolean existsByUsername(String username) {
+        return userRepository.existsById(username);
     }
 
 }
