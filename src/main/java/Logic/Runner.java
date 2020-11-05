@@ -9,26 +9,12 @@ public class Runner {
 
         Field field = new Field(10, 10, 25);
 
-        try {
-            Logger.info(field.stringify());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        /*
-        //Clicks all the cells in order
-        for(int i = 0; i < field.getWidth(); i++) {
-            for(int j = 0; j < field.getHeight(); j++) {
-                field.click(i, j);
-                field.log();
-            }
-        }
-        */
-
-        //Asks for user input to reveal the cells
+        Logger.info("\n\n>>>This instance of the program is only for testing purposes.<<<\n");
         int x;
         int y;
         Scanner sc = new Scanner(System.in);
+
+        field.unsafeLog();
 
         while(true) {
 
@@ -42,7 +28,9 @@ public class Runner {
             Logger.info("Enter your selection's y coordinate: ");
             y = sc.nextInt();
 
-            field.click(x-1, y-1);
+            field.click(y-1, x-1);
+            field.unsafeLog();
+            Logger.trace("----------------");
             field.log();
         }
     }
