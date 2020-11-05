@@ -31,7 +31,7 @@ public class RegisterController {
         if (bindingResult.hasErrors()) {
             return "register";
         }
-        if (!userService.existsByEmail(user.getEmail())) {
+        if (!userService.existsByUsername(user.getUsername())) {
             userService.createUser(user);
             return "register_success";
         } else {
