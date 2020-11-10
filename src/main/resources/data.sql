@@ -1,15 +1,11 @@
-INSERT INTO users (username, password, enabled)
+INSERT INTO users (username, password, enabled, roles)
     values ('user',
         'pass',
-        true);
+        true,
+        'ROLE_USER');
 
-INSERT INTO users (username, password, enabled)
+INSERT INTO users (username, password, enabled, roles)
     values ('admin',
         'pass',
-        true);
-
-INSERT INTO authorities (username, authority)
-    values ('user', 'ROLE_USER');
-
-INSERT INTO authorities (username, authority)
-    values ('admin', 'ROLE_ADMIN');
+        true,
+        'ROLE_ADMIN');
