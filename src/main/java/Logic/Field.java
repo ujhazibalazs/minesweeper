@@ -32,6 +32,13 @@ public class Field {
             }
         }
         fill(numberOfMines);
+
+        for(int i = 0; i < gameField.length; i++) {
+            for(int j = 0; j < gameField[0].length; j++) {
+                gameField[i][j].setBombsAround(getNumberOfMines(i, j));
+            }
+        }
+
         return gameField;
     }
 
@@ -64,7 +71,7 @@ public class Field {
                     if(gameField[i][j].getType() == Types.BOMB) {
                         line += "¤ ";
                     } else if (gameField[i][j].getType() == Types.EMPTY) {
-                        line += getNumberOfMines(i, j) + " ";
+                        line += gameField[i][j].getBombsAround() + " ";
                     }
                 } else {
                     line += ". ";
