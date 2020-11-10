@@ -31,6 +31,7 @@ public class RegisterController {
             return "register";
         }
         if (!userService.existsByUsername(user.getUsername())) {
+            user.setRoles("ROLE_USER");
             userService.createUser(user);
             return "index";
         } else {
