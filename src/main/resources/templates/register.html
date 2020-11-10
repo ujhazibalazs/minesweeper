@@ -1,16 +1,27 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+              integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+              crossorigin="anonymous">
+
         <link href="css/styles.css" rel="stylesheet" />
+
         <title>Registration</title>
     </head>
     <body>
-        <div class="innerpage">
-            <div class="header">
+        <div class="container mt-5">
+
+            <div class="container bg-secondary text-light p-3">
                 <h1>Minesweeper</h1>
             </div>
-            <div class="body">
+
+            <div class="container bg-light border-left border-right p-5">
                 <h2>Registration</h2>
                 <div class="registration-form">
                     <form action="#" th:action="@{/register}" th:object="${user}" method="post">
@@ -26,7 +37,7 @@
                                 <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
                             </tr>
                             <tr>
-                                <td><button type="submit">Register</button></td>
+                                <td><button type="submit" class="btn btn-primary btn-lg">Register</button></td>
                             </tr>
                             <tr>
                                 <td>Already have an account?</td>
@@ -36,9 +47,11 @@
                     </form>
                 </div>
             </div>
-            <div class="footer">
-                <h3>Footer</h3>
-            </div>
+            <footer>
+                <div class="container border bg-secondary text-light p-2">
+                    <h3>Footer</h3>
+                </div>
+            </footer>
         </div>
     </body>
 </html>
