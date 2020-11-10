@@ -6,13 +6,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
-@Data
 public class User {
 
     @Id
@@ -26,6 +23,17 @@ public class User {
 
     @Column(name = "enabled")
     private boolean enabled = true;
+
+    @Column(name = "roles")
+    private String roles;
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
 
     public boolean isEnabled() {
         return enabled;
