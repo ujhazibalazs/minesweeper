@@ -60,9 +60,9 @@ public class UserServiceImplementation implements UserService {
         if(userDb.isPresent()) {
             return userDb.get();
         } else {
-            Logger.error("Record with the given email not found");
+            Logger.error("Record with the given username not found");
             throw new RuntimeException();
-            //throw record with this email not found exception.
+            //throw record with this username not found exception.
         }
     }
 

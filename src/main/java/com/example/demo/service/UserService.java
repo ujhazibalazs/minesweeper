@@ -8,7 +8,7 @@ public interface UserService {
     User createUser(User user);
     User updateUser(User user);
     List<User> getAllUsers();
-    User getUserByUsername(String email);
-    void deleteUserByUsername(String email);
-    boolean existsByUsername(String email);
+    User getUserByUsername(String username);
+    void deleteUserByUsername(String username);
+    boolean existsByUsername(String username);
 }
