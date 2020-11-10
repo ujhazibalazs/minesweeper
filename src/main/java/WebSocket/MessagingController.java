@@ -11,6 +11,8 @@ public class MessagingController {
     @MessageMapping("/websocket")
     @SendTo("/topic/messages")
     public Field sendMessage() throws Exception {
-        return new Field(10, 10, 25);
+        Field field = new Field(10, 10, 25);
+        field.unsafeLog();
+        return field;
     }
 }

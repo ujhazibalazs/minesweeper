@@ -11,7 +11,11 @@ function connect() {
                 for (i = 0; i < 10; i++) {
                     table += "<tr>"
                     for (j = 0; j < 10; j++) {
-                        table += "<td>" + field.gameField[i][j].type + "</td>";
+                        if(field.gameField[i][j].type != "BOMB") {
+                            table += "<td>" + field.gameField[i][j].bombsAround + "</td>";
+                        } else {
+                            table += "<td>" + "¤" + "</td>";
+                        }
                     }
                     table += "</tr>"
                 }

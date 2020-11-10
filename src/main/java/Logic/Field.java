@@ -23,7 +23,7 @@ public class Field {
     final private int height;
     final private int numberOfTotalMines;
     private int numberOfRevealedEmptyCells;
-    Cell[][] gameField;
+    private Cell[][] gameField;
 
     private Cell[][] initialize(int numberOfMines) {
         for (int i = 0; i < gameField.length; i++) {
@@ -42,7 +42,7 @@ public class Field {
         return gameField;
     }
 
-    Cell[][] fill(int numberOfMines) {
+    public Cell[][] fill(int numberOfMines) {
         ArrayList<Types> cells = new ArrayList<>();
         for(int i = 0; i < numberOfMines; i++) {
             cells.add(Types.BOMB);
@@ -62,7 +62,7 @@ public class Field {
         return gameField;
     }
 
-    void log() {
+    public void log() {
         String line = "";
         for(int i = 0; i < gameField.length; i++) {
             line = "";
@@ -81,7 +81,7 @@ public class Field {
         }
     }
 
-    void unsafeLog() {
+    public void unsafeLog() {
         String line = "";
         for(int i = 0; i < gameField.length; i++) {
             line = "";
@@ -96,7 +96,7 @@ public class Field {
         }
     }
 
-    Cell[][] click(int posX, int posY) {
+    public Cell[][] click(int posX, int posY) {
         if(posX >= 0 && posX < width && posY >= 0 && posY < height) {
 
             gameField[posX][posY].setRevealed(true);
@@ -114,7 +114,7 @@ public class Field {
         return gameField;
     }
 
-    int getNumberOfMines(int x, int y) {
+    public int getNumberOfMines(int x, int y) {
         int numberOfBombs = 0;
         if(x >= 0 && x < width && y >= 0 && y < height) {
             for(int i = x - 1; i <= x + 1; i++) {
@@ -132,7 +132,7 @@ public class Field {
         return numberOfBombs;
     }
 
-    boolean allEmptyCellsRevealed() {
+    public boolean allEmptyCellsRevealed() {
         int numberOfRevealedEmptyCells = 0;
         for(int i = 0; i < gameField.length; i++) {
             for(int j = 0; j < gameField[0].length; j++) {
