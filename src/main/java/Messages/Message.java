@@ -1,4 +1,4 @@
-package Message;
+package Messages;
 
 import Logic.Cell;
 import Logic.Types;

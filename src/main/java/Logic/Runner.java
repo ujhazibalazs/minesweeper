@@ -1,6 +1,6 @@
 package Logic;
 
-import Message.Message;
+import Messages.Message;
 import org.tinylog.Logger;
 
 import java.util.Scanner;

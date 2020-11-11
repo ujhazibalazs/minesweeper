@@ -12,11 +12,11 @@ function connect() {
                     table += "<tr>"
                     for (j = 0; j < 10; j++) {
                         if(field.messageField[i][j].type == "EMPTY") {
-                            table += "<td " + "x=\"" + i + "\"" + "y=\"" + j + "\"" + ">" + field.messageField[i][j].number + "</td>";
+                            table += "<td " + "x=\"" + i + "\"" + "y=\"" + j + "\"" + "onclick=\"sendClick(" + i + ", " + j + ")\"" + ">" + field.messageField[i][j].number + "</td>";
                         } else if (field.messageField[i][j].type == "BOMB"){
-                            table += "<td " + "x=\"" + i + "\"" + "y=\"" + j + "\"" + ">" + "¤" + "</td>";
+                            table += "<td " + "x=\"" + i + "\"" + "y=\"" + j + "\"" + "onclick=\"sendClick(" + i + ", " + j + ")\"" + ">" + "¤" + "</td>";
                         } else if (field.messageField[i][j].type == "UNREVEALED") {
-                            table += "<td " + "x=\"" + i + "\"" + "y=\"" + j + "\"" + ">" + " " + "</td>";
+                            table += "<td " + "x=\"" + i + "\"" + "y=\"" + j + "\"" + "onclick=\"sendClick(" + i + ", " + j + ")\"" + ">" + " " + "</td>";
                         }
                     }
                     table += "</tr>"
@@ -30,7 +30,20 @@ function connect() {
 }
 
 function send() {
-    stompClient.send("/app/websocket", {});
+    var clickMessage = {
+        x: -1,
+        y: -1
+    };
+    stompClient.send("/app/websocket", {}, JSON.stringify(clickMessage));
+}
+
+function sendClick(i, j) {
+    console.log("clicked the cell: " + i + ", " + j);
+    var clickMessage = {
+        x: i,
+        y: j
+    };
+    stompClient.send("/app/websocket", {}, JSON.stringify(clickMessage));
 }
 
 function start() {
