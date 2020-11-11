@@ -24,7 +24,7 @@ function connect() {
 
                 document.getElementById("numberOfTotalMines").innerHTML = "Total number of mines: " + field.numberOfTotalMines;
                 document.getElementById("gameField").innerHTML = table;
-                document.getElementById("emptyCellsRevealed").innerHTML = "Empty cells revealed: " + field.numberOfRevealedEmptyCells;
+                document.getElementById("emptyCellsRevealed").innerHTML = "Empty cells revealed: " + field.emptyCellsRevealed + "/" + (((field.width * field.height) - field.numberOfTotalMines) - 1).toString();
         });
     });
 }

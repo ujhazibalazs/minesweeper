@@ -1,6 +1,7 @@
 package Messages;
 
 import Logic.Cell;
+import Logic.Field;
 import Logic.Types;
 import lombok.Data;
 import org.tinylog.Logger;
@@ -8,19 +9,20 @@ import org.tinylog.Logger;
 @Data
 public class Message {
 
-    public Message(int width, int height, int numberOfTotalMines, Cell[][] gameField) {
-        this.width = width;
-        this.height = height;
-        this.numberOfTotalMines = numberOfTotalMines;
+    public Message(Field field) {
+        this.width = field.getWidth();
+        this.height = field.getHeight();
+        this.numberOfTotalMines = field.getNumberOfTotalMines();
+        this.emptyCellsRevealed = field.getNumberOfRevealedEmptyCells();
         this.messageField = new MessageCell[width][height];
 
         messageField = initialize(numberOfTotalMines);
 
-        for (int i = 0; i < gameField.length; i++) {
-            for (int j = 0; j < gameField[0].length; j++) {
-                if(gameField[i][j].isRevealed()) {
-                    messageField[i][j].setType(gameField[i][j].getType());
-                    messageField[i][j].setNumber(gameField[i][j].getBombsAround());
+        for (int i = 0; i < field.getGameField().length; i++) {
+            for (int j = 0; j < field.getGameField()[0].length; j++) {
+                if(field.getGameField()[i][j].isRevealed()) {
+                    messageField[i][j].setType(field.getGameField()[i][j].getType());
+                    messageField[i][j].setNumber(field.getGameField()[i][j].getBombsAround());
                 }
             }
         }
@@ -28,6 +30,7 @@ public class Message {
 
     final int height;
     final int width;
+    private int emptyCellsRevealed;
     final private int numberOfTotalMines;
     private MessageCell[][] messageField;
 

@@ -9,7 +9,7 @@ public class Runner {
     public static void main(String[] args) {
 
         Field field = new Field(5, 5, 5);
-        Message message = new Message(field.getWidth(), field.getHeight(), field.getNumberOfTotalMines(), field.getGameField());
+        Message message = new Message(field);
 
         message.unsafeLog();
 
@@ -35,7 +35,7 @@ public class Runner {
             field.click(y-1, x-1);
             field.unsafeLog();
             Logger.trace("--------------------");
-            message = new Message(field.getWidth(), field.getHeight(), field.getNumberOfTotalMines(), field.getGameField());
+            message = new Message(field);
             message.unsafeLog();
         }
     }

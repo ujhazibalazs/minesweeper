@@ -104,10 +104,8 @@ public class Field {
             if(gameField[posX][posY].getType() == Types.BOMB) {
                 Logger.info("You Lost! You clicked (" + (posX + 1) + ", "+ (posY + 1) + ")");
                 Logger.info("");
-                //To be removed later
-                System.exit(0);
             } else {
-                Logger.info("");
+                numberOfRevealedEmptyCells++;
             }
         }
 
