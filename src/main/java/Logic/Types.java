@@ -1,6 +1,7 @@
 package Logic;
 
-enum Types {
+public enum Types {
+    UNREVEALED,
     BOMB,
     EMPTY
 }

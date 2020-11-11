@@ -11,10 +11,12 @@ function connect() {
                 for (i = 0; i < 10; i++) {
                     table += "<tr>"
                     for (j = 0; j < 10; j++) {
-                        if(field.gameField[i][j].type != "BOMB") {
-                            table += "<td>" + field.gameField[i][j].bombsAround + "</td>";
-                        } else {
-                            table += "<td>" + "¤" + "</td>";
+                        if(field.messageField[i][j].type == "EMPTY") {
+                            table += "<td " + "x=\"" + i + "\"" + "y=\"" + j + "\"" + ">" + field.messageField[i][j].number + "</td>";
+                        } else if (field.messageField[i][j].type == "BOMB"){
+                            table += "<td " + "x=\"" + i + "\"" + "y=\"" + j + "\"" + ">" + "¤" + "</td>";
+                        } else if (field.messageField[i][j].type == "UNREVEALED") {
+                            table += "<td " + "x=\"" + i + "\"" + "y=\"" + j + "\"" + ">" + " " + "</td>";
                         }
                     }
                     table += "</tr>"
