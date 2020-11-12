@@ -18,13 +18,9 @@ public class LoginController {
         return "index";
     }
 
-    @PostMapping("/")
-    public String submitForm(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "index";
-        }
-
-        return "gameMenu";
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 
 }
