@@ -8,9 +8,9 @@ function connect() {
 
             var i, j;
                 var table = "";
-                for (i = 0; i < 10; i++) {
+                for (i = 0; i < field.width; i++) {
                     table += "<tr>"
-                    for (j = 0; j < 10; j++) {
+                    for (j = 0; j < field.height; j++) {
                         if(field.messageField[i][j].type == "EMPTY") {
                             table += "<td style=\"background-color:lightgreen;\" " + "x=\"" + i + "\"" + "y=\"" + j + "\"" + "onclick=\"sendClick(" + i + ", " + j + ")\"" + ">" + field.messageField[i][j].number + "</td>";
                         } else if (field.messageField[i][j].type == "BOMB"){
@@ -24,7 +24,7 @@ function connect() {
 
                 document.getElementById("numberOfTotalMines").innerHTML = "Total number of mines: " + field.numberOfTotalMines;
                 document.getElementById("gameField").innerHTML = table;
-                document.getElementById("emptyCellsRevealed").innerHTML = "Empty cells revealed: " + field.emptyCellsRevealed + "/" + (((field.width * field.height) - field.numberOfTotalMines) - 1).toString();
+                document.getElementById("emptyCellsRevealed").innerHTML = "Empty cells revealed: " + field.emptyCellsRevealed + "/" + (((field.width * field.height) - field.numberOfTotalMines)).toString();
         });
     });
 }

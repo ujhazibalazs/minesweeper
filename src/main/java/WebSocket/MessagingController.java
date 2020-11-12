@@ -11,7 +11,7 @@ import org.tinylog.Logger;
 @Controller
 public class MessagingController {
 
-    Field field = new Field(10, 10, 10);
+    Field field = new Field(5, 5, 10);
 
     @MessageMapping("/websocket")
     @SendTo("/topic/messages")
