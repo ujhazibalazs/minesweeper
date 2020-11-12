@@ -12,9 +12,9 @@ function connect() {
                     table += "<tr>"
                     for (j = 0; j < 10; j++) {
                         if(field.messageField[i][j].type == "EMPTY") {
-                            table += "<td " + "x=\"" + i + "\"" + "y=\"" + j + "\"" + "onclick=\"sendClick(" + i + ", " + j + ")\"" + ">" + field.messageField[i][j].number + "</td>";
+                            table += "<td style=\"background-color:lightgreen;\" " + "x=\"" + i + "\"" + "y=\"" + j + "\"" + "onclick=\"sendClick(" + i + ", " + j + ")\"" + ">" + field.messageField[i][j].number + "</td>";
                         } else if (field.messageField[i][j].type == "BOMB"){
-                            table += "<td " + "x=\"" + i + "\"" + "y=\"" + j + "\"" + "onclick=\"sendClick(" + i + ", " + j + ")\"" + ">" + "¤" + "</td>";
+                            table += "<td style=\"background-color:red;\" " + "x=\"" + i + "\"" + "y=\"" + j + "\"" + "onclick=\"sendClick(" + i + ", " + j + ")\"" + ">" + "¤" + "</td>";
                         } else if (field.messageField[i][j].type == "UNREVEALED") {
                             table += "<td " + "x=\"" + i + "\"" + "y=\"" + j + "\"" + "onclick=\"sendClick(" + i + ", " + j + ")\"" + ">" + " " + "</td>";
                         }

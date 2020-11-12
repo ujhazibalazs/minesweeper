@@ -101,7 +101,7 @@ public class Field {
 
             gameField[posX][posY].setRevealed(true);
 
-            if(gameField[posX][posY].getType() == Types.BOMB) {
+            if(gameField[posX][posY].getType() == Types.BOMB && gameField[posX][posY].isRevealed()) {
                 Logger.info("You Lost! You clicked (" + (posX + 1) + ", "+ (posY + 1) + ")");
                 Logger.info("");
             } else {
