@@ -13,7 +13,7 @@ public class MessagingController {
 
     int width = 10;
     int height = 10;
-    int numberOfMines = 90;
+    int numberOfMines = 20;
 
     Field field = new Field(width, height, numberOfMines);
     int numberOfClicksDone = 0;
@@ -23,12 +23,16 @@ public class MessagingController {
     public Message sendMessage(ClickMessage clickMessage) {
         Logger.info("Clicked: x: " + clickMessage.getX() + ", y: " + clickMessage.getY());
 
+        if(clickMessage.getX() == -1 && clickMessage.getY() == -1) {
+            field = new Field(width, height, numberOfMines);
+            numberOfClicksDone = 0;
+        }
+
         if(numberOfClicksDone == 1) {
             field.fill(numberOfMines, clickMessage.getX(), clickMessage.getY());
         }
 
         field.setGameField(field.click(clickMessage.getX(), clickMessage.getY()));
-        Logger.debug("");
         field.unsafeLog();
 
         numberOfClicksDone++;

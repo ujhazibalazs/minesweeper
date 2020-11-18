@@ -49,11 +49,7 @@ public class Field {
 
         cells.add(Types.EMPTY);
 
-        cells.forEach(Logger::info);
-
         Collections.swap(cells, width * x + y, cells.size() - 1);
-
-        cells.forEach(Logger::trace);
 
         for(int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {

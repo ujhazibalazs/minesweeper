@@ -17,6 +17,8 @@ function connect() {
                             table += "<td style=\"background-color:lightgreen;\" " + "x=\"" + i + "\"" + "y=\"" + j + "\"" + "onclick=\"sendClick(" + i + ", " + j + ")\"" + ">" + field.messageField[i][j].number + "</td>";
                         } else if (field.messageField[i][j].type == "BOMB"){
                             table += "<td style=\"background-color:red;\" " + "x=\"" + i + "\"" + "y=\"" + j + "\"" + "onclick=\"sendClick(" + i + ", " + j + ")\"" + ">" + "¤" + "</td>";
+                            document.body.style.backgroundColor = "#ffcccc";
+                            document.getElementById("startMessage").innerHTML = "YOU LOST!";
                         } else if (field.messageField[i][j].type == "UNREVEALED") {
                             table += "<td " + "x=\"" + i + "\"" + "y=\"" + j + "\"" + "onclick=\"sendClick(" + i + ", " + j + ")\"" + ">" + " " + "</td>";
                         }
@@ -31,7 +33,8 @@ function connect() {
     });
 }
 
-function send() {
+function newGame() {
+    document.body.style.backgroundColor = "lightgrey";
     var clickMessage = {
         x: -1,
         y: -1
@@ -50,8 +53,6 @@ function sendClick(i, j) {
 }
 
 function start() {
-
-    send();
-
+    newGame();
     document.getElementById("startMessage").innerHTML = "MINESWEEPER STARTED!"
 }
