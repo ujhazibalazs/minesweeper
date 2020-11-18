@@ -1,3 +1,5 @@
+connect();
+
 function connect() {
     var socket = new SockJS('/websocket');
     stompClient = Stomp.over(socket);
@@ -40,6 +42,7 @@ function send() {
 function sendClick(i, j) {
     console.log("clicked the cell: " + i + ", " + j);
     var clickMessage = {
+        type: "LEFT",
         x: i,
         y: j
     };

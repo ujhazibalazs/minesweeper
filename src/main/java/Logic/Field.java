@@ -1,6 +1,5 @@
 package Logic;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import org.tinylog.Logger;
 import java.util.ArrayList;
@@ -42,7 +41,7 @@ public class Field {
         return gameField;
     }
 
-    public Cell[][] fill(int numberOfMines) {
+    private Cell[][] fill(int numberOfMines) {
         ArrayList<Types> cells = new ArrayList<>();
         for(int i = 0; i < numberOfMines; i++) {
             cells.add(Types.BOMB);
@@ -60,25 +59,6 @@ public class Field {
         }
 
         return gameField;
-    }
-
-    public void log() {
-        String line = "";
-        for(int i = 0; i < gameField.length; i++) {
-            line = "";
-            for(int j = 0; j < gameField[0].length; j++) {
-                if(gameField[i][j].isRevealed()) {
-                    if(gameField[i][j].getType() == Types.BOMB) {
-                        line += "¤ ";
-                    } else if (gameField[i][j].getType() == Types.EMPTY) {
-                        line += gameField[i][j].getBombsAround() + " ";
-                    }
-                } else {
-                    line += ". ";
-                }
-            }
-            Logger.trace(line);
-        }
     }
 
     public void unsafeLog() {
@@ -140,10 +120,5 @@ public class Field {
             }
         }
         return numberOfTotalMines == (width * height) - numberOfRevealedEmptyCells;
-    }
-
-    public String stringify() throws Exception {
-        ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.writeValueAsString(gameField);
     }
 }
