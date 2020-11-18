@@ -1,6 +1,7 @@
 package Logic;
 
 import lombok.Data;
+import lombok.extern.java.Log;
 import org.tinylog.Logger;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,7 +15,7 @@ public class Field {
         this.numberOfTotalMines = numberOfMines;
         this.gameField = new Cell[width][height];
 
-        initialize(numberOfMines);
+        initialize();
 
     }
 
@@ -24,37 +25,45 @@ public class Field {
     private int numberOfRevealedEmptyCells;
     private Cell[][] gameField;
 
-    private Cell[][] initialize(int numberOfMines) {
+    public Cell[][] initialize() {
+
         for (int i = 0; i < gameField.length; i++) {
             for (int j = 0; j < gameField[0].length; j++) {
                 gameField[i][j] = new Cell();
-            }
-        }
-        fill(numberOfMines);
-
-        for(int i = 0; i < gameField.length; i++) {
-            for(int j = 0; j < gameField[0].length; j++) {
-                gameField[i][j].setBombsAround(getNumberOfMines(i, j));
             }
         }
 
         return gameField;
     }
 
-    private Cell[][] fill(int numberOfMines) {
+    public Cell[][] fill(int numberOfMines, int x, int y) {
         ArrayList<Types> cells = new ArrayList<>();
         for(int i = 0; i < numberOfMines; i++) {
             cells.add(Types.BOMB);
         }
-        for(int i = 0; i < width * height - numberOfMines; i++) {
+        for(int i = 0; i < (width * height - numberOfMines) - 1; i++) {
             cells.add(Types.EMPTY);
         }
 
         Collections.shuffle(cells);
 
+        cells.add(Types.EMPTY);
+
+        cells.forEach(Logger::info);
+
+        Collections.swap(cells, width * x + y, cells.size() - 1);
+
+        cells.forEach(Logger::trace);
+
         for(int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 gameField[i][j].setType(cells.get((i * height) + j));
+            }
+        }
+
+        for(int i = 0; i < gameField.length; i++) {
+            for(int j = 0; j < gameField[0].length; j++) {
+                gameField[i][j].setBombsAround(getNumberOfMines(i, j));
             }
         }
 
