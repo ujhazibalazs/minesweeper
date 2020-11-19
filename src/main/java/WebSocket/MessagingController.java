@@ -11,9 +11,9 @@ import org.tinylog.Logger;
 @Controller
 public class MessagingController {
 
-    int width = 10;
-    int height = 10;
-    int numberOfMines = 20;
+    int width = 5;
+    int height = 5;
+    int numberOfMines = 5;
 
     Field field = new Field(width, height, numberOfMines);
     int numberOfClicksDone = 0;

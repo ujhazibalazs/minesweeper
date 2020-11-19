@@ -1,7 +1,6 @@
 package Logic;
 
 import lombok.Data;
-import lombok.extern.java.Log;
 import org.tinylog.Logger;
 import java.util.ArrayList;
 import java.util.Collections;
