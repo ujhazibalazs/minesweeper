@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Game</title>
-</head>
-<body>
- <h1>Game</h1>
-</body>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MINESWEEPER
+        </title>
+        <link href="css/index.css" rel="stylesheet" type="text/css">
+        <script src="/webjars/jquery/jquery.min.js"></script>
+        <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+        <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+        <script src="js/app.js"></script>
+    </head>
+    <body>
+        <button id="start" onclick="start()">
+            New Game
+        </button>
+
+        <p id="startMessage"></p>
+
+        <div>
+            <p id="numberOfTotalMines">Total number of mines: </p>
+        </div>
+        <div id="table">
+            <table>
+                <tbody id="gameField"></tbody>
+            </table>
+        </div>
+        <div>
+            <p id="emptyCellsRevealed">Empty cells revealed: </p>
+        </div>
+    </body>
 </html>

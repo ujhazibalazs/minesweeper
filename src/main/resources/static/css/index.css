@@ -1,0 +1,26 @@
+body {
+    background-color: lightgrey;
+    margin: 5vh;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+table, tr, td {
+    border: 0.5vh solid rgb(63, 63, 63);
+    border-collapse: collapse;
+}
+
+td {
+    text-align: center;
+    vertical-align: middle;
+    width: 6vh;
+    height: 6vh;
+}
+
+td:hover {
+    background-color: darkgrey;
+}
+
+td:active {
+    background-color: grey;
+}
