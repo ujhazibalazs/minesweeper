@@ -1,4 +1,4 @@
-package Logic;
+package com.example.demo.Logic;
 
 public enum Types {
     UNREVEALED,

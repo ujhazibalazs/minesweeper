@@ -1,8 +1,8 @@
-package WebSocket;
+package com.example.demo.WebSocket;
 
-import Logic.Field;
-import Messages.Message;
-import Messages.ClickMessage;
+import com.example.demo.Logic.Field;
+import com.example.demo.Messages.Message;
+import com.example.demo.Messages.ClickMessage;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;

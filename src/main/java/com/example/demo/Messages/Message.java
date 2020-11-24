@@ -1,8 +1,7 @@
-package Messages;
+package com.example.demo.Messages;
 
-import Logic.Cell;
-import Logic.Field;
-import Logic.Types;
+import com.example.demo.Logic.Field;
+import com.example.demo.Logic.Types;
 import lombok.Data;
 import org.tinylog.Logger;
 

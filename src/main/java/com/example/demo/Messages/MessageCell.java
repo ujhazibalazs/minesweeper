@@ -1,6 +1,6 @@
-package Messages;
+package com.example.demo.Messages;
 
-import Logic.Types;
+import com.example.demo.Logic.Types;
 import lombok.Data;
 
 @Data
