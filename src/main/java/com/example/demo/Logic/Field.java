@@ -1,5 +1,6 @@
 package com.example.demo.Logic;
 
+import com.example.demo.Messages.ClickTypes;
 import lombok.Data;
 import org.tinylog.Logger;
 import java.util.ArrayList;
@@ -80,7 +81,13 @@ public class Field {
         }
     }
 
-    public Cell[][] click(int posX, int posY) {
+    public Cell[][] click(int posX, int posY, ClickTypes type) {
+
+        if(type == ClickTypes.RIGHT) {
+            gameField[posX][posY].setFlagged(!gameField[posX][posY].isFlagged());
+            return gameField;
+        }
+
         if(posX >= 0 && posX < width && posY >= 0 && posY < height) {
 
             gameField[posX][posY].setRevealed(true);

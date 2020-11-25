@@ -13,15 +13,33 @@ function connect() {
                 for (i = 0; i < field.width; i++) {
                     table += "<tr>"
                     for (j = 0; j < field.height; j++) {
-                        if(field.messageField[i][j].type == "EMPTY") {
-                            table += "<td style=\"background-color:lightgreen;\" " + "x=\"" + i + "\"" + "y=\"" + j + "\"" + "onclick=\"sendClick(" + i + ", " + j + ")\"" + ">" + field.messageField[i][j].number + "</td>";
+                        if(field.messageField[i][j].flagged == true) {
+                            table += "<td style=\"background-color:yellow;\" "
+                                + "x=\"" + i + "\"" + "y=\"" + j + "\""
+                                + "oncontextmenu=\"rightClick(" + i + ", " + j + "); return false;\""
+                                + "onclick=\"sendClick(" + i + ", " + j + ")\"" + ">"
+                                + "⚑" + "</td>";
+                        } else if(field.messageField[i][j].type == "EMPTY") {
+                            table += "<td style=\"background-color:lightgreen;\" "
+                                + "x=\"" + i + "\"" + "y=\"" + j + "\""
+                                + "oncontextmenu=\"rightClick(" + i + ", " + j + "); return false;\""
+                                + "onclick=\"sendClick(" + i + ", " + j + ")\"" + ">"
+                                + field.messageField[i][j].number + "</td>";
                             checkIfGameHasEnded(field);
                         } else if (field.messageField[i][j].type == "BOMB"){
-                            table += "<td style=\"background-color:red;\" " + "x=\"" + i + "\"" + "y=\"" + j + "\"" + "onclick=\"sendClick(" + i + ", " + j + ")\"" + ">" + "¤" + "</td>";
+                            table += "<td style=\"background-color:red;\" "
+                                + "x=\"" + i + "\"" + "y=\"" + j + "\""
+                                + "oncontextmenu=\"rightClick(" + i + ", " + j + "); return false;\""
+                                + "onclick=\"sendClick(" + i + ", " + j + ")\"" + ">"
+                                + "¤" + "</td>";
                             document.body.style.backgroundColor = "#ffcccc";
                             document.getElementById("startMessage").innerHTML = "YOU LOST!";
                         } else if (field.messageField[i][j].type == "UNREVEALED") {
-                            table += "<td " + "x=\"" + i + "\"" + "y=\"" + j + "\"" + "onclick=\"sendClick(" + i + ", " + j + ")\"" + ">" + " " + "</td>";
+                            table += "<td "
+                                + "x=\"" + i + "\"" + "y=\"" + j + "\""
+                                + "oncontextmenu=\"rightClick(" + i + ", " + j + "); return false;\""
+                                + "onclick=\"sendClick(" + i + ", " + j + ")\"" + ">"
+                                + " " + "</td>";
                         }
                     }
                     table += "</tr>"
@@ -34,9 +52,19 @@ function connect() {
     });
 }
 
+function rightClick(i, j) {
+    var clickMessage = {
+            type: "RIGHT",
+            x: i,
+            y: j
+        };
+        stompClient.send("/app/websocket", {}, JSON.stringify(clickMessage));
+}
+
 function newGame() {
     document.body.style.backgroundColor = "lightgrey";
     var clickMessage = {
+        type: "LEFT",
         x: -1,
         y: -1
     };

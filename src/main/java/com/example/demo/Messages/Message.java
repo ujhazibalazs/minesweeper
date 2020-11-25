@@ -23,6 +23,7 @@ public class Message {
                     messageField[i][j].setType(field.getGameField()[i][j].getType());
                     messageField[i][j].setNumber(field.getGameField()[i][j].getBombsAround());
                 }
+                messageField[i][j].setFlagged(field.getGameField()[i][j].isFlagged());
             }
         }
     }

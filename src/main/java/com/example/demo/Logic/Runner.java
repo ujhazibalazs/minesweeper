@@ -1,5 +1,6 @@
 package com.example.demo.Logic;
 
+import com.example.demo.Messages.ClickTypes;
 import com.example.demo.Messages.Message;
 import org.tinylog.Logger;
 
@@ -32,7 +33,7 @@ public class Runner {
             Logger.info("Enter your selection's y coordinate: ");
             y = sc.nextInt();
 
-            field.click(y-1, x-1);
+            field.click(y-1, x-1, ClickTypes.LEFT);
             field.unsafeLog();
             Logger.trace("--------------------");
             message = new Message(field);

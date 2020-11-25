@@ -7,4 +7,5 @@ import lombok.Data;
 public class MessageCell {
     Types type = Types.UNREVEALED;
     int number;
+    boolean isFlagged;
 }
