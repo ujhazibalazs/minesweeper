@@ -13,8 +13,8 @@ table, tr, td {
 td {
     text-align: center;
     vertical-align: middle;
-    width: 6vh;
-    height: 6vh;
+    width: 4vh;
+    height: 4vh;
 }
 
 td:hover {
