@@ -96,11 +96,25 @@ public class Field {
                 Logger.info("You Lost! You clicked (" + (posX + 1) + ", "+ (posY + 1) + ")");
                 Logger.info("");
             } else {
-                numberOfRevealedEmptyCells++;
+                numberOfRevealedEmptyCells = getNumberOfRevealedEmptyCells(this);
             }
         }
 
         return gameField;
+    }
+
+    private int getNumberOfRevealedEmptyCells(Field field) {
+        int numberOfRevealedEmptyCells = 0;
+
+        for(int i = 0; i < field.gameField.length; i++) {
+            for(int j = 0; j < field.gameField[0].length; j++) {
+                if(field.gameField[i][j].isRevealed) {
+                    numberOfRevealedEmptyCells++;
+                }
+            }
+        }
+
+        return numberOfRevealedEmptyCells;
     }
 
     public int getNumberOfMines(int x, int y) {
