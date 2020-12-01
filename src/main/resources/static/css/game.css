@@ -24,3 +24,36 @@ td:hover {
 td:active {
     background-color: grey;
 }
+
+#header {
+    display: flex;
+    width: 100vh;
+    margin: auto;
+    border: 0.5vh solid rgb(63, 63, 63);
+    border-collapse: collapse;
+    background-color: darkgrey;
+    margin-bottom: 2vh;
+    margin-top: 2vh
+}
+
+table {
+    margin: auto;
+}
+
+#back {
+    vertical-align: middle;
+    width: 12vh;
+    height: 2em;
+    margin: 2vh;
+    float: left;
+    box-shadow: 5px 5px 2px rgb(63, 63, 63);
+}
+
+#start {
+    vertical-align: middle;
+    width: 12vh;
+    height: 2em;
+    margin: 2vh;
+    float: left;
+    box-shadow: 5px 5px 2px rgb(63, 63, 63);
+}
