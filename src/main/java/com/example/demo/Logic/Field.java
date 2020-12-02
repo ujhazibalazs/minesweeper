@@ -14,6 +14,7 @@ public class Field {
         this.height = height;
         this.numberOfTotalMines = numberOfMines;
         this.gameField = new Cell[width][height];
+        this.endOfGame = false;
 
         initialize();
 
@@ -24,6 +25,7 @@ public class Field {
     final private int numberOfTotalMines;
     private int numberOfRevealedEmptyCells;
     private Cell[][] gameField;
+    private boolean endOfGame;
 
     public Cell[][] initialize() {
 
@@ -83,23 +85,32 @@ public class Field {
 
     public Cell[][] click(int posX, int posY, ClickTypes type) {
 
-        if(type == ClickTypes.RIGHT) {
-            gameField[posX][posY].setFlagged(!gameField[posX][posY].isFlagged());
-            return gameField;
-        }
+        if(!isEndOfGame()) {
+            if(type == ClickTypes.RIGHT) {
+                if(!gameField[posX][posY].isRevealed()) {
+                    gameField[posX][posY].setFlagged(!gameField[posX][posY].isFlagged());
+                    return gameField;
+                }
+            }
 
-        if(posX >= 0 && posX < width && posY >= 0 && posY < height) {
-
-            gameField[posX][posY].setRevealed(true);
-
-            if(gameField[posX][posY].getType() == Types.BOMB) {
-                Logger.info("You Lost! You clicked (" + (posX + 1) + ", "+ (posY + 1) + ")");
-                Logger.info("");
-            } else {
-                numberOfRevealedEmptyCells = getNumberOfRevealedEmptyCells(this);
+            if(posX >= 0 && posX < width && posY >= 0 && posY < height) {
+                if(!gameField[posX][posY].isFlagged) {
+                    gameField[posX][posY].setRevealed(true);
+                    if(gameField[posX][posY].getType() == Types.BOMB) {
+                        Logger.info("You Lost! You clicked (" + (posX + 1) + ", "+ (posY + 1) + ")");
+                        Logger.info("");
+                        setEndOfGame(true);
+                    } else {
+                        numberOfRevealedEmptyCells = getNumberOfRevealedEmptyCells(this);
+                        int numberOfUnrevealedCells = getNumberOfUnrevealedEmptyCells(this);
+                        if(numberOfUnrevealedCells == numberOfTotalMines) {
+                            setEndOfGame(true);
+                            Logger.info("You Won!");
+                        }
+                    }
+                }
             }
         }
-
         return gameField;
     }
 
@@ -115,6 +126,20 @@ public class Field {
         }
 
         return numberOfRevealedEmptyCells;
+    }
+
+    private int getNumberOfUnrevealedEmptyCells(Field field) {
+        int numberOfUnrevealedEmptyCells = 0;
+
+        for(int i = 0; i < field.gameField.length; i++) {
+            for(int j = 0; j < field.gameField[0].length; j++) {
+                if(!field.gameField[i][j].isRevealed) {
+                    numberOfUnrevealedEmptyCells++;
+                }
+            }
+        }
+
+        return numberOfUnrevealedEmptyCells;
     }
 
     public int getNumberOfMines(int x, int y) {
