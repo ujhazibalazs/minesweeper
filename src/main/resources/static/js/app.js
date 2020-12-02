@@ -1,5 +1,8 @@
 connect();
 
+var date;
+var startTime;
+
 function connect() {
     var socket = new SockJS('/websocket');
     stompClient = Stomp.over(socket);
@@ -62,6 +65,9 @@ function rightClick(i, j) {
 }
 
 function newGame() {
+    date = new Date();
+    startTime = date.getTime();
+
     document.body.style.backgroundColor = "lightgrey";
     var clickMessage = {
         type: "LEFT",
@@ -82,8 +88,9 @@ function checkIfGameHasEnded(field) {
         }
     }
     if(unrevealedEmptyCellCounter == field.numberOfTotalMines) {
+        date = new Date().getTime();
         document.body.style.backgroundColor = "#DDFFDD";
-        document.getElementById("startMessage").innerHTML = "YOU WON!";
+        document.getElementById("startMessage").innerHTML = "YOU WON! Your time: "  + ((date - startTime) / 1000) + " seconds";
     }
 }
 
